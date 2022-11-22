@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <button @click="add">添加ihx</button>
+        <ul>
+            <li v-for="(item,index) in person" :key="index">
+                <!-- vue v-for以key绑定的值为标识，当用以渲染的数据发生变化时，先更新虚拟dom（在内存中），然后diff算法会以key值为标识比较新旧虚拟dom内的内容（包括标签与文本），
+                    相同的内容复用，不同的内容更新，然后再生成真实dom。所以本例中用index绑定key，当输入框内有内容时且触发add方法，在数组前添加ihx。
+                    新旧虚拟dom相比较得出name文本发生改变而虚拟dom的input标签是相同的（注意虚拟dom中的input是没内容的，我们在input中输入的内容在真实dom中），
+                故name更新而input框复用导致错误。得出结论key应该绑定item中的唯一属性 -->
+                {{item.name}}
+                <input type="text">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            person: [{
+                    id: '001',
+                    name: 'i'
+                }, {
+                    id: '002',
+                    name: 'h'
+                }, {
+                    id: '003',
+                    name: 'x'
+                },
+
+            ]
+        },
+        methods: {
+            add() {
+                const p = {
+                    id: '004',
+                    name: 'ihx'
+                }
+                this.person.unshift(p)
+                    //this.person.push(p)
+            }
+        }
+    })
+</script>
+
+</html>
