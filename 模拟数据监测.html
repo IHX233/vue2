@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // vue中给对象直接添加新属性，或对数组中的某项做修改时是无响应式的（因为数组索引不被代理，但数组内某项是对象，对对象内属性做修改是有响应式的）
+    let data = {
+            name: 'ihx',
+            age: 23
+        }
+        //创建实例对象，用于监测data中的属性变化
+    const obs = new observer(data)
+        //准备一个实例对象
+    let vm = {}
+    vm._data = data = obs
+
+    function observer(obj) {
+        keys.forEach((k) => {
+            console.log(this)
+            Object.defineProperty(this, k, {
+                get() {
+                    return obj[k]
+                },
+                set(val) {
+                    console.log(`${k}被修改了，要开始解析模版，生成虚拟dom了`)
+                    obj[k] = val
+                }
+            })
+        })
+
+
+    }
+</script>
+
+</html>

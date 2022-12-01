@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // a instancceof b 只要b在a的原型链上就返回true
+    class Person {
+        constructor(name) {
+            this.name = name
+        }
+        drink() {
+            console.log('喝水')
+        }
+    }
+    class Student extends Person {
+        constructor(name, score) {
+            super(name);
+            this.score = score
+        }
+        introduce() {
+            console.log(`我是${this.name}我考了${this.score}分`)
+        }
+    }
+    class Teacher extends Person {
+        constructor(name, subject) {
+            super(name);
+            this.subject = subject
+        }
+        teach() {
+            console.log(`我是${this.name}我教${this.subject}`)
+        }
+    }
+    let student = new Student('张三', 99)
+    console.log('student', student)
+    student.drink()
+    student.introduce()
+    let teacher = new Teacher('李四', 'js')
+    console.log('teacher', teacher)
+    teacher.teach()
+</script>
+
+</html>
