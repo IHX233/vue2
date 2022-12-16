@@ -1,18 +1,21 @@
+
 <template>
     <div>
-        <div>{{$store.state.sum}}</div>
+        <div>{{sum}}</div>
+        <div>{{bigSum}}</div>
+        <div>我在{{address}}做{{work}}</div>
         <select v-model.number='n'>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
-        <button @click='waitAdd'>+</button>
-        <button @click='waitReduce'>-</button>
+        <button @click='waitAdd(n)'>+</button>
+        <button @click='waitReduce(n)'>-</button>
     </div>
     
 </template>
 <script>
-
+//不用map简写方式的写法
 export default {
     name:'Two',
     data(){
@@ -20,13 +23,27 @@ export default {
             n:1
         }
     },
+    computed:{
+        sum(){
+            return this.$store.state.sumOption.sum
+        },
+        address(){
+            return this.$store.state.workOption.address
+        },
+        work(){
+            return this.$store.state.workOption.work
+        },
+        bigSum(){
+            return this.$store.getters['sumOption/bigSum']
+        }
+    },
     methods:{
-      waitAdd(){
-        this.$store.dispatch('waitAdd',this.n)
-      },  
-      waitReduce(){
-        this.$store.dispatch('waitReduce',this.n)
-      }
+        waitAdd(n){
+            this.$store.dispatch('sumOption/waitAdd',n)
+        },
+        waitReduce(n){
+            this.$store.dispatch('sumOption/waitReduce',n)
+        }
     }
 }
 </script>
