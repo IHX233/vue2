@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <Count></Count>
-    <count-1></count-1>
+    <div>
+        <div>
+            <router-link to="/count">Count</router-link>
+        </div>
+        <div>
+            <router-link to="/count1">Count1</router-link>
+        </div>
+    </div>
+    <div>
+        <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Count from './components/count'
-import Count1 from './components/count1'
 
 export default {
   name: 'App',
   components: {
-    Count,Count1
+    
   }
 }
 </script>

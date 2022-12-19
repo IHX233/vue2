@@ -17,7 +17,7 @@
 <script>
 //不用map简写方式的写法
 export default {
-    name:'Two',
+    name:'CountOne',
     data(){
         return {
             n:1

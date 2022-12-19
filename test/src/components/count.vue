@@ -18,7 +18,7 @@
 //用map简写方式的写法
 import {mapState,mapGetters,mapMutations} from 'vuex'
 export default {
-    name:'One',
+    name:'Count',
     data(){
         return {
             n:1
