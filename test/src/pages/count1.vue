@@ -11,6 +11,12 @@
         </select>
         <button @click='waitAdd(n)'>+</button>
         <button @click='waitReduce(n)'>-</button>
+        <div>
+            <router-link to='/count1/num'>num</router-link>
+            <router-link to='/count1/word'>word</router-link>
+        </div>
+        
+        <router-view></router-view>
     </div>
     
 </template>
