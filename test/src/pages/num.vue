@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div>{{$route.query.title || $route.params.title}}</div>
         <ul>
             <li>1</li>
             <li>2</li>

@@ -16,8 +16,9 @@ export default new VueRouter({
                     component: Num
                 },
                 {
-                    path: 'word',
-                    component: Word
+                    path: 'word/:title',
+                    component: Word,
+                    name: 'word' //路由层级过多时可使用name跳转
                 }
             ]
         }
